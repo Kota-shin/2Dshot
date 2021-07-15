@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
 {
+    public Transform shotPoint;
+    public GameObject bulletPrefab;
     Animator animator;
+
     void Start()
     {
         animator = GetComponent<Animator>();   
@@ -12,10 +15,11 @@ public class PlayerCtrl : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space"))      //弾を発射する処理
         {
-            Debug.Log("攻撃");
-            animator.SetTrigger("shot");
+            
+            animator.SetTrigger("shot");    //アニメーション「shot」
+            Instantiate(bulletPrefab, shotPoint.position,transform.rotation);
         }
     }
 }

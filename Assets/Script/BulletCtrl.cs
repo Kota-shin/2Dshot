@@ -13,9 +13,25 @@ public class BulletCtrl : MonoBehaviour
         rd.velocity = transform.right * speed;
     }
 
- 
     void Update()
     {
-        
+        if (transform.position.x > 10.0f)  //弾の破棄（X軸で通り過ぎたら破棄)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //敵に当たった時の処理
+        if(collision.tag == "Enemy")
+        {
+            //ダメージを与える
+            EnemyCtrl enemy =collision.GetComponent<EnemyCtrl>();
+            enemy.OnDamage();
+        }
+
+        //消滅
+        Destroy(gameObject);
     }
 }

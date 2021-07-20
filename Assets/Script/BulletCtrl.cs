@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletCtrl : MonoBehaviour
 {
+    public GameObject impactPrefab;
     float speed = 10f;
     Rigidbody2D rd;
 
@@ -29,6 +30,7 @@ public class BulletCtrl : MonoBehaviour
             //ダメージを与える
             EnemyCtrl enemy =collision.GetComponent<EnemyCtrl>();
             enemy.OnDamage();
+            Instantiate(impactPrefab, transform.position, transform.rotation);
         }
 
         //消滅

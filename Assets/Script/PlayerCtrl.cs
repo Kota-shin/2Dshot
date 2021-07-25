@@ -10,6 +10,8 @@ public class PlayerCtrl : MonoBehaviour
     [Header("弾プレファブ")] public GameObject bulletPrefab;
     Animator animator;
     [Header("右向きか")] bool isRight;
+    const float coolTime = 0.4f;            //待機時間
+    float leftCoolTime;             //待機している時間
     #endregion
 
     #region//プライベート変数
@@ -20,8 +22,9 @@ public class PlayerCtrl : MonoBehaviour
     {
         //コンポーネントのインスタンスを捕まえる
         animator = GetComponent<Animator>();
-        rd = GetComponent<Rigidbody2D>();      //Rigidbody2D
+        rd = GetComponent<Rigidbody2D>();      
         isRight = true;
+        leftCoolTime = 0;
     }
 
     void Update()
@@ -75,11 +78,15 @@ public class PlayerCtrl : MonoBehaviour
 
     void Shot()
     {
-        if (Input.GetKeyDown("space"))      //弾を発射する処理
+        leftCoolTime -= Time.deltaTime;
+        if (leftCoolTime <= 0)
         {
-
-            animator.SetTrigger("shot");    //アニメーション「shot」
-            Instantiate(bulletPrefab, shotPoint.position, transform.rotation);
+            if (Input.GetKeyDown("space"))      //弾を発射する処理
+            {
+                animator.SetTrigger("shot");    //アニメーション「shot」
+                Instantiate(bulletPrefab, shotPoint.position, transform.rotation);
+                leftCoolTime = coolTime;
+            }
         }
     }
 }

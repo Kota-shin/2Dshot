@@ -7,6 +7,7 @@ public class BulletCtrl : MonoBehaviour
     public GameObject impactPrefab;
     float speed = 10f;
     Rigidbody2D rd;
+    private string enemyTag = "Enemy";
 
     void Start()
     {
@@ -25,7 +26,7 @@ public class BulletCtrl : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //敵に当たった時の処理
-        if(collision.tag == "Enemy")
+        if(collision.tag == enemyTag)
         {
             //ダメージを与える
             EnemyCtrl enemy =collision.GetComponent<EnemyCtrl>();

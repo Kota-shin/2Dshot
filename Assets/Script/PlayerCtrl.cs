@@ -16,6 +16,7 @@ public class PlayerCtrl : MonoBehaviour
 
     #region//プライベート変数
     private Rigidbody2D rd = null;
+    private string enemyTag = "Enemy";
     #endregion
 
     void Start()
@@ -87,6 +88,14 @@ public class PlayerCtrl : MonoBehaviour
                 Instantiate(bulletPrefab, shotPoint.position, transform.rotation);
                 leftCoolTime = coolTime;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == enemyTag)
+        {
+            Debug.Log("敵と衝突した");
         }
     }
 }

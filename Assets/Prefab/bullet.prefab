@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3202908237055348741}
-  - component: {fileID: 662603602117624075}
   - component: {fileID: 4843500355147080686}
+  - component: {fileID: 8678142669919821897}
+  - component: {fileID: 662603602117624075}
   - component: {fileID: 7439970352863163372}
   - component: {fileID: 8477517909773069048}
   - component: {fileID: 6061334427998664258}
-  - component: {fileID: 8678142669919821897}
   m_Layer: 0
   m_Name: bullet
   m_TagString: Untagged
@@ -36,6 +36,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4843500355147080686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332425360810667997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47dde493806992c4fa95dca6af682964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactPrefab: {fileID: 4135241158534436699, guid: 70ccabdfad66ef34e88157068919130d,
+    type: 3}
+--- !u!114 &8678142669919821897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332425360810667997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abee2a2d456aa874c8a8b0b12f7e5f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftTime: 1.15
 --- !u!212 &662603602117624075
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -86,20 +113,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4843500355147080686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 332425360810667997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47dde493806992c4fa95dca6af682964, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  impactPrefab: {fileID: 4135241158534436699, guid: 70ccabdfad66ef34e88157068919130d,
-    type: 3}
 --- !u!50 &7439970352863163372
 Rigidbody2D:
   serializedVersion: 4
@@ -163,16 +176,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3807406, y: 0.13066065}
   m_EdgeRadius: 0
---- !u!114 &8678142669919821897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 332425360810667997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abee2a2d456aa874c8a8b0b12f7e5f56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftTime: 5

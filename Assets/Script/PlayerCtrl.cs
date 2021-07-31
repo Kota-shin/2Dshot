@@ -8,15 +8,18 @@ public class PlayerCtrl : MonoBehaviour
     [Header("移動速度")] public float speed;
     [Header("銃口")]public Transform shotPoint;
     [Header("弾プレファブ")] public GameObject bulletPrefab;
-    Animator animator;
     [Header("右向きか")] bool isRight;
-    const float coolTime = 0.4f;            //待機時間
+    [Header("撃った後の待機時間")]const float coolTime = 0.4f;
+    [Header("接地判定")] public GroundCheck ground;
+    //[Header("ジャンプの速さ")] public float jumpSpeed;
     float leftCoolTime;             //待機している時間
     #endregion
 
     #region//プライベート変数
     private Rigidbody2D rd = null;
+    private Animator animator = null;
     private string enemyTag = "Enemy";
+    private bool isGround = false;      
     #endregion
 
     void Start()
@@ -30,6 +33,7 @@ public class PlayerCtrl : MonoBehaviour
 
     void Update()
     {
+        isGround = ground.IsGround();
         float x = Input.GetAxis("Horizontal");
         Dierction(x);
         Shot();
@@ -54,7 +58,8 @@ public class PlayerCtrl : MonoBehaviour
         //未入力で止まる
         else
         {
-            rd.velocity = Vector2.zero;
+            //rd.velocity = Vector2.zero;
+            rd.velocity = new Vector2(0, rd.velocity.y);
             animator.SetBool("run", false);
         }
         

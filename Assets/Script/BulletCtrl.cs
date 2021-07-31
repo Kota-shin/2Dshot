@@ -17,10 +17,12 @@ public class BulletCtrl : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.x > 10.0f)  //弾の破棄（X軸で通り過ぎたら破棄)
-        {
-            Destroy(gameObject);
-        }
+
+        //今回は時間経過で破壊（別スクリプトにて制御）
+        //if (transform.position.x > 10.0f)  //弾の破棄（X軸で通り過ぎたら破棄)
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

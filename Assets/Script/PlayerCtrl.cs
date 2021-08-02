@@ -11,7 +11,8 @@ public class PlayerCtrl : MonoBehaviour
     [Header("右向きか")] bool isRight;
     [Header("撃った後の待機時間")]const float coolTime = 0.4f;
     [Header("接地判定")] public GroundCheck ground;
-    //[Header("ジャンプの速さ")] public float jumpSpeed;
+    [Header("重力")] public float gravity;
+    [Header("ジャンプの速さ")] public float jumpSpeed;
     float leftCoolTime;             //待機している時間
     #endregion
 
@@ -19,7 +20,9 @@ public class PlayerCtrl : MonoBehaviour
     private Rigidbody2D rd = null;
     private Animator animator = null;
     private string enemyTag = "Enemy";
-    private bool isGround = false;      
+    private string deadAreaTag = "DeadArea";
+    private bool isGround = false;
+    private bool isJump = false;        //お試し
     #endregion
 
     void Start()
@@ -42,9 +45,36 @@ public class PlayerCtrl : MonoBehaviour
     void FixedUpdate()
     {
         float horizontalKey = Input.GetAxis("Horizontal");
+        float ySpeed = -gravity;        //お試し
+        float verticalKey = Input.GetAxis("Vertical");
 
+        //上方向でジャンプ
+        if (isGround)
+        {
+            if (verticalKey > 0)
+            {
+                ySpeed = jumpSpeed;
+                isJump = true;
+            }
+            else
+            {
+                isJump = false;
+            }
+        }
+        else if (isJump)
+        {
+            if (verticalKey > 0)
+            {
+                ySpeed = jumpSpeed;
+            }
+            else
+            {
+                isJump = false;
+            }
+        }
+       
         //右入力で右に動く
-        if(horizontalKey > 0)
+        if (horizontalKey > 0)
         {
             rd.velocity = new Vector2(speed, rd.velocity.y);
             animator.SetBool("run", true);
@@ -110,5 +140,6 @@ public class PlayerCtrl : MonoBehaviour
         {
             Debug.Log("敵と衝突した");
         }
-     }*/
+     }
+    */
 }
